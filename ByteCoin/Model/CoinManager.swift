@@ -8,6 +8,7 @@
 
 import Foundation
 
+//MARK: - CoinManager Delegate
 protocol CoinManagerDelegate{
     func didFailwithError(error: Error)
     func passLastPriceOfBitcoin(price: String, currency: String)
@@ -15,6 +16,7 @@ protocol CoinManagerDelegate{
 
 struct CoinManager {
     
+    //MARK: - Attributes
     let baseURL = "https://rest.coinapi.io/v1/exchangerate/BTC"
     let apiKey = "5668BA67-D1DB-48F3-BC93-E3492182BB9D"
     
@@ -23,7 +25,7 @@ struct CoinManager {
     var delegate: CoinManagerDelegate?
     
     
-    
+    //MARK: - Methods
     func getCoinPrice(for currency: String) {
         let urlString = "\(baseURL)/\(currency)?apikey=\(apiKey)"
         if let url = URL(string: urlString) {
